@@ -1,0 +1,542 @@
+{
+  "7": {
+    "service": "echo",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 7", "nmap -p 7 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/7-tcp-udp-pentesting-echo.html"]
+  },
+  "20": {
+    "service": "ftp-data",
+    "tools": ["ftp", "nc"],
+    "commands": ["nc -nv {target} 20", "ftp {target} 20"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ftp/index.html"]
+  },
+  "21": {
+    "service": "ftp",
+    "tools": ["ftp", "hydra"],
+    "commands": ["ftp {target}", "hydra -l anonymous -P passwords.txt ftp://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ftp/index.html"]
+  },
+  "22": {
+    "service": "ssh",
+    "tools": ["ssh", "hydra"],
+    "commands": ["ssh {target}", "hydra -l root -P passwords.txt ssh://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ssh.html"]
+  },
+  "23": {
+    "service": "telnet",
+    "tools": ["telnet", "nc"],
+    "commands": ["telnet {target}", "nc -nv {target} 23"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-telnet.html"]
+  },
+  "25": {
+    "service": "smtp",
+    "tools": ["smtp-user-enum", "nc"],
+    "commands": ["smtp-user-enum -M VRFY -U users.txt -t {target}", "nc -nv {target} 25"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html"]
+  },
+  "43": {
+    "service": "whois",
+    "tools": ["whois", "nc"],
+    "commands": ["whois {target}", "nc -nv {target} 43"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/43-pentesting-whois.html"]
+  },
+  "49": {
+    "service": "tacacs+",
+    "tools": ["nmap", "nc"],
+    "commands": ["nmap -p 49 {target}", "nc -nv {target} 49"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/49-pentesting-tacacs+.html"]
+  },
+  "53": {
+    "service": "dns",
+    "tools": ["dig", "dnsrecon"],
+    "commands": ["dig @ {target} any", "dnsrecon -d {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"]
+  },
+  "69": {
+    "service": "tftp",
+    "tools": ["tftp", "nc"],
+    "commands": ["tftp {target}", "nc -nv {target} 69"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/69-udp-tftp.html"]
+  },
+  "79": {
+    "service": "finger",
+    "tools": ["finger", "nc"],
+    "commands": ["finger @{target}", "nc -nv {target} 79"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-finger.html"]
+  },
+  "80": {
+    "service": "web",
+    "tools": ["nikto", "gobuster"],
+    "commands": ["nikto -h {target}", "gobuster dir -u http://{target} -w wordlist.txt"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"]
+  },
+  "88": {
+    "service": "kerberos",
+    "tools": ["kerbrute", "nmap"],
+    "commands": ["kerbrute -d {target}", "nmap --script krb5-enum-users -p 88 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-kerberos-88/index.html"]
+  },
+  "110": {
+    "service": "pop",
+    "tools": ["nc", "hydra"],
+    "commands": ["nc -nv {target} 110", "hydra -l user -P passwords.txt pop3://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-pop.html"]
+  },
+  "111": {
+    "service": "rpcbind",
+    "tools": ["rpcinfo", "nmap"],
+    "commands": ["rpcinfo -p {target}", "nmap -sU -p 111 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-rpcbind.html"]
+  },
+  "113": {
+    "service": "ident",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 113", "nmap -p 113 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/113-pentesting-ident.html"]
+  },
+  "123": {
+    "service": "ntp",
+    "tools": ["ntpdate", "nmap"],
+    "commands": ["ntpdate {target}", "nmap -sU -p 123 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ntp.html"]
+  },
+  "135": {
+    "service": "msrpc",
+    "tools": ["rpcclient", "nmap"],
+    "commands": ["rpcclient -U '' {target}", "nmap -p 135 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/135-pentesting-msrpc.html"]
+  },
+  "137": {
+    "service": "netbios",
+    "tools": ["nbtscan", "nmap"],
+    "commands": ["nbtscan {target}", "nmap -sU -p 137 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/137-138-139-pentesting-netbios.html"]
+  },
+  "139": {
+    "service": "netbios",
+    "tools": ["smbclient", "nmap"],
+    "commands": ["smbclient -L \\\\{target}", "nmap -p 139 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/137-138-139-pentesting-netbios.html"]
+  },
+  "143": {
+    "service": "imap",
+    "tools": ["nc", "hydra"],
+    "commands": ["nc -nv {target} 143", "hydra -l user -P passwords.txt imap://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-imap.html"]
+  },
+  "161": {
+    "service": "snmp",
+    "tools": ["snmpwalk", "onesixtyone"],
+    "commands": ["snmpwalk -v2c -c public {target}", "onesixtyone -c community.txt {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html"]
+  },
+  "264": {
+    "service": "checkpoint",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 264", "nmap -p 264 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-264-check-point-firewall-1.html"]
+  },
+  "389": {
+    "service": "ldap",
+    "tools": ["ldapsearch", "hydra"],
+    "commands": ["ldapsearch -x -H ldap://{target}", "hydra -l user -P passwords.txt ldap://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ldap.html"]
+  },
+  "443": {
+    "service": "web",
+    "tools": ["nikto", "sslscan"],
+    "commands": ["nikto -h https://{target}", "sslscan {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"]
+  },
+  "445": {
+    "service": "smb",
+    "tools": ["smbclient", "enum4linux"],
+    "commands": ["smbclient -L \\\\{target}", "enum4linux -a {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"]
+  },
+  "500": {
+    "service": "ipsec",
+    "tools": ["ike-scan", "nmap"],
+    "commands": ["ike-scan {target}", "nmap -p 500 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/ipsec-ike-vpn-pentesting.html"]
+  },
+  "502": {
+    "service": "modbus",
+    "tools": ["nmap", "modbuscli"],
+    "commands": ["nmap -p 502 --script modbus-discover {target}", "modbuscli {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-modbus.html"]
+  },
+  "512": {
+    "service": "rexec",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 512", "nmap -p 512 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/512-pentesting-rexec.html"]
+  },
+  "513": {
+    "service": "rlogin",
+    "tools": ["rlogin", "nmap"],
+    "commands": ["rlogin {target}", "nmap -p 513 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-rlogin.html"]
+  },
+  "514": {
+    "service": "rsh",
+    "tools": ["rsh", "nmap"],
+    "commands": ["rsh {target}", "nmap -p 514 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-rsh.html"]
+  },
+  "515": {
+    "service": "lpd",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 515", "nmap -p 515 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/515-pentesting-line-printer-daemon-lpd.html"]
+  },
+  "548": {
+    "service": "afp",
+    "tools": ["afp_client", "nmap"],
+    "commands": ["afp_client {target}", "nmap -p 548 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/584-pentesting-afp.html"]
+  },
+  "554": {
+    "service": "rtsp",
+    "tools": ["vlc", "nmap"],
+    "commands": ["vlc rtsp://{target}", "nmap -p 554 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/554-8554-pentesting-rtsp.html"]
+  },
+  "623": {
+    "service": "ipmi",
+    "tools": ["ipmitool", "nmap"],
+    "commands": ["ipmitool -H {target} -U user -P pass", "nmap -sU -p 623 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/623-udp-ipmi.html"]
+  },
+  "631": {
+    "service": "ipp",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 631", "nmap -p 631 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-631-internet-printing-protocol-ipp.html"]
+  },
+  "700": {
+    "service": "epp",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 700", "nmap -p 700 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/700-pentesting-epp.html"]
+  },
+  "873": {
+    "service": "rsync",
+    "tools": ["rsync", "nmap"],
+    "commands": ["rsync {target}::", "nmap -p 873 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/873-pentesting-rsync.html"]
+  },
+  "1026": {
+    "service": "rusersd",
+    "tools": ["rpcinfo", "nmap"],
+    "commands": ["rpcinfo -p {target}", "nmap -p 1026 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1026-pentesting-rusersd.html"]
+  },
+  "1080": {
+    "service": "socks",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 1080", "nmap -p 1080 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1080-pentesting-socks.html"]
+  },
+  "1099": {
+    "service": "rmi",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 1099", "nmap -p 1099 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1099-pentesting-java-rmi.html"]
+  },
+  "1414": {
+    "service": "ibmmq",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 1414", "nmap -p 1414 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1414-pentesting-ibmmq.html"]
+  },
+  "1433": {
+    "service": "mssql",
+    "tools": ["mssqlclient.py", "hydra"],
+    "commands": ["mssqlclient.py user:pass@{target}", "hydra -l sa -P passwords.txt mssql://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mssql-microsoft-sql-server/index.html"]
+  },
+  "1521": {
+    "service": "listener",
+    "tools": ["odat", "tnscmd10g"],
+    "commands": ["odat.py -s {target}", "tnscmd10g version -h {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1521-1522-1529-pentesting-oracle-listener.html"]
+  },
+  "1723": {
+    "service": "pptp",
+    "tools": ["pptpclient", "nmap"],
+    "commands": ["pptpclient {target}", "nmap -p 1723 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1723-pentesting-pptp.html"]
+  },
+  "1883": {
+    "service": "mosquitto",
+    "tools": ["mosquitto_sub", "nmap"],
+    "commands": ["mosquitto_sub -h {target} -t test", "nmap -p 1883 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/1883-pentesting-mqtt-mosquitto.html"]
+  },
+  "2049": {
+    "service": "nfs",
+    "tools": ["showmount", "nmap"],
+    "commands": ["showmount -e {target}", "nmap -p 2049 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/nfs-service-pentesting.html"]
+  },
+  "2375": {
+    "service": "docker",
+    "tools": ["docker", "nc"],
+    "commands": ["docker -H tcp://{target}:2375 ps", "nc -nv {target} 2375"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/2375-pentesting-docker.html"]
+  },
+  "3128": {
+    "service": "squid",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 3128", "nmap -p 3128 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/3128-pentesting-squid.html"]
+  },
+  "3260": {
+    "service": "iscsi",
+    "tools": ["iscsiadm", "nmap"],
+    "commands": ["iscsiadm -m discovery -t st -p {target}", "nmap -p 3260 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/3260-pentesting-iscsi.html"]
+  },
+  "3299": {
+    "service": "saprouter",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 3299", "nmap -p 3299 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/3299-pentesting-saprouter.html"]
+  },
+  "3306": {
+    "service": "mysql",
+    "tools": ["mysql", "hydra"],
+    "commands": ["mysql -h {target} -u root", "hydra -l root -P passwords.txt mysql://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mysql.html"]
+  },
+  "3389": {
+    "service": "rdp",
+    "tools": ["rdesktop", "hydra"],
+    "commands": ["rdesktop {target}", "hydra -l user -P passwords.txt rdp://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-rdp.html"]
+  },
+  "3632": {
+    "service": "distcc",
+    "tools": ["distcc", "nmap"],
+    "commands": ["distcc {target}", "nmap -p 3632 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/3632-pentesting-distcc.html"]
+  },
+  "3690": {
+    "service": "svn",
+    "tools": ["svn", "nmap"],
+    "commands": ["svn info {target}", "nmap -p 3690 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/3690-pentesting-subversion-svn-server.html"]
+  },
+  "3702": {
+    "service": "discovery",
+    "tools": ["wsdd", "nmap"],
+    "commands": ["wsdd -i {target}", "nmap -sU -p 3702 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/3702-udp-pentesting-ws-discovery.html"]
+  },
+  "4369": {
+    "service": "epmd",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 4369", "nmap -p 4369 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/4369-pentesting-erlang-port-mapper-daemon-epmd.html"]
+  },
+  "4786": {
+    "service": "cisco",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 4786", "nmap -p 4786 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/4786-cisco-smart-install.html"]
+  },
+  "4840": {
+    "service": "opc",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 4840", "nmap -p 4840 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/4840-pentesting-opc-ua.html"]
+  },
+  "5000": {
+    "service": "registry",
+    "tools": ["docker", "nmap"],
+    "commands": ["docker -H {target}:5000 ps", "nmap -p 5000 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5000-pentesting-docker-registry.html"]
+  },
+  "5353": {
+    "service": "mdns",
+    "tools": ["avahi-browse", "nmap"],
+    "commands": ["avahi-browse -a -t {target}", "nmap -sU -p 5353 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5353-udp-multicast-dns-mdns.html"]
+  },
+  "5432": {
+    "service": "postgresql",
+    "tools": ["psql", "hydra"],
+    "commands": ["psql -h {target} -U postgres", "hydra -l postgres -P passwords.txt postgresql://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-postgresql.html"]
+  },
+  "5439": {
+    "service": "redshift",
+    "tools": ["psql", "nmap"],
+    "commands": ["psql -h {target} -U user", "nmap -p 5439 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5439-pentesting-redshift.html"]
+  },
+  "5555": {
+    "service": "adb",
+    "tools": ["adb", "nmap"],
+    "commands": ["adb connect {target}:5555", "nmap -p 5555 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5555-android-debug-bridge.html"]
+  },
+  "5601": {
+    "service": "kibana",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:5601", "nmap -p 5601 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5601-pentesting-kibana.html"]
+  },
+  "5672": {
+    "service": "amqp",
+    "tools": ["rabbitmqctl", "nmap"],
+    "commands": ["rabbitmqctl -n {target} status", "nmap -p 5672 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5671-5672-pentesting-amqp.html"]
+  },
+  "5900": {
+    "service": "vnc",
+    "tools": ["vncviewer", "hydra"],
+    "commands": ["vncviewer {target}", "hydra -l user -P passwords.txt vnc://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-vnc.html"]
+  },
+  "5984": {
+    "service": "couchdb",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:5984", "nmap -p 5984 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5984-pentesting-couchdb.html"]
+  },
+  "5985": {
+    "service": "winrm",
+    "tools": ["evil-winrm", "hydra"],
+    "commands": ["evil-winrm -i {target} -u user -p pass", "hydra -l user -P passwords.txt winrm://{target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/5985-5986-pentesting-winrm.html"]
+  },
+  "6000": {
+    "service": "x11",
+    "tools": ["xterm", "nmap"],
+    "commands": ["xterm -display {target}:0", "nmap -p 6000 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/6000-pentesting-x11.html"]
+  },
+  "6379": {
+    "service": "redis",
+    "tools": ["redis-cli", "nc"],
+    "commands": ["redis-cli -h {target}", "nc -nv {target} 6379"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html"]
+  },
+  "8009": {
+    "service": "ajp",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 8009", "nmap -p 8009 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/8009-pentesting-apache-jserv-protocol-ajp.html"]
+  },
+  "8080": {
+    "service": "web",
+    "tools": ["nikto", "gobuster"],
+    "commands": ["nikto -h http://{target}:8080", "gobuster dir -u http://{target}:8080 -w wordlist.txt"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"]
+  },
+  "8086": {
+    "service": "influxdb",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:8086", "nmap -p 8086 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/8086-pentesting-influxdb.html"]
+  },
+  "8089": {
+    "service": "splunkd",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:8089", "nmap -p 8089 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/8089-splunkd.html"]
+  },
+  "8333": {
+    "service": "bitcoin",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 8333", "nmap -p 8333 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/8333-18333-38333-18444-pentesting-bitcoin.html"]
+  },
+  "9000": {
+    "service": "fastcgi",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 9000", "nmap -p 9000 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/9000-pentesting-fastcgi.html"]
+  },
+  "9001": {
+    "service": "hsqldb",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 9001", "nmap -p 9001 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/9001-pentesting-hsqldb.html"]
+  },
+  "9042": {
+    "service": "cassandra",
+    "tools": ["cqlsh", "nmap"],
+    "commands": ["cqlsh {target}", "nmap -p 9042 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/cassandra.html"]
+  },
+  "9100": {
+    "service": "pjl",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 9100", "nmap -p 9100 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/9100-pjl.html"]
+  },
+  "9200": {
+    "service": "elasticsearch",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:9200", "nmap -p 9200 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/9200-pentesting-elasticsearch.html"]
+  },
+  "10000": {
+    "service": "ndmp",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 10000", "nmap -p 10000 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/10000-network-data-management-protocol-ndmp.html"]
+  },
+  "11211": {
+    "service": "memcache",
+    "tools": ["nc", "memcstat"],
+    "commands": ["nc -nv {target} 11211", "memcstat --servers={target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/11211-memcache/index.html"]
+  },
+  "15672": {
+    "service": "management",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:15672", "nmap -p 15672 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/15672-pentesting-rabbitmq-management.html"]
+  },
+  "24007": {
+    "service": "glusterfs",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 24007", "nmap -p 24007 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/24007-24008-24009-49152-pentesting-glusterfs.html"]
+  },
+  "27017": {
+    "service": "mongodb",
+    "tools": ["mongo", "nc"],
+    "commands": ["mongo {target}:27017", "nc -nv {target} 27017"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/27017-27018-mongodb.html"]
+  },
+  "44134": {
+    "service": "helm",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 44134", "nmap -p 44134 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/44134-pentesting-tiller-helm.html"]
+  },
+  "44818": {
+    "service": "ethernetip",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 44818", "nmap -p 44818 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/44818-ethernetip.html"]
+  },
+  "47808": {
+    "service": "bacnet",
+    "tools": ["nc", "nmap"],
+    "commands": ["nc -nv {target} 47808", "nmap -sU -p 47808 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/47808-udp-bacnet.html"]
+  },
+  "50030": {
+    "service": "hadoop",
+    "tools": ["curl", "nmap"],
+    "commands": ["curl http://{target}:50030", "nmap -p 50030 {target}"],
+    "resources": ["https://book.hacktricks.wiki/en/network-services-pentesting/50030-50060-50070-50075-50090-pentesting-hadoop.html"]
+  }
+}
