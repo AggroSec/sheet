@@ -1,0 +1,9 @@
+{
+  "id": "sheet-collapse",
+  "name": "SHEET Collapse",
+  "version": "0.1.0",
+  "minAppVersion": "0.15.0",
+  "description": "Imports pasted SHEET cheatsheet Markdown into the current note with all sections collapsed.",
+  "author": "Secadin",
+  "isDesktopOnly": false
+}
