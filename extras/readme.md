@@ -18,9 +18,9 @@ Unofficial Obsidian plugin for importing SHEET cheatsheets with collapsed headin
 
 ## Notes
 
-Works best in Source Mode for reliable folding.
-Requires “Fold headings” enabled in Obsidian settings.
-this is not required, and totally lazy.
+Works best in Source Mode for reliable folding.  
+Requires “Fold headings” enabled in Obsidian settings.  
+this is not required, and totally lazy.  
 there is also an option to just paste the markdown into a note then run the command fold all from the palette as well, this is more of an alternative way of doing it.
 
 ## Disclaimer
